@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Parses certificate information from cert in Headers",
+        "title": "Traefik-ForwardAuth-Certs",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/status": {
+            "get": {
+                "summary": "Status",
+                "operationId": "status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/certificate/cn": {
+            "get": {
+                "summary": "Common Name from Certificate",
+                "operationId": "get-cn-from-certificate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "PEM Encoded Certificate",
+                        "name": "X-Forwarded-Tls-Client-Cert",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client CN",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/certificate/cn-regex": {
+            "get": {
+                "summary": "Regex'ed Common Name from Certificate",
+                "operationId": "get-cn-from-certificate-regex",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "PEM Encoded Certificate",
+                        "name": "X-Forwarded-Tls-Client-Cert",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client CN",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/certificate/dn": {
+            "get": {
+                "summary": "Distinguished Name from Certificate",
+                "operationId": "get-dn-from-certificate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "PEM Encoded Certificate",
+                        "name": "X-Forwarded-Tls-Client-Cert",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client DN",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

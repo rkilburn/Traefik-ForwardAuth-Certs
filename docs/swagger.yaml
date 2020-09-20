@@ -1,0 +1,62 @@
+info:
+  contact: {}
+  description: Parses certificate information from cert in Headers
+  license: {}
+  title: Traefik-ForwardAuth-Certs
+  version: "1.0"
+paths:
+  /status:
+    get:
+      operationId: status
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Status
+  /v1/certificate/cn:
+    get:
+      operationId: get-cn-from-certificate
+      parameters:
+      - description: PEM Encoded Certificate
+        in: header
+        name: X-Forwarded-Tls-Client-Cert
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Client CN
+          schema:
+            type: string
+      summary: Common Name from Certificate
+  /v1/certificate/cn-regex:
+    get:
+      operationId: get-cn-from-certificate-regex
+      parameters:
+      - description: PEM Encoded Certificate
+        in: header
+        name: X-Forwarded-Tls-Client-Cert
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Client CN
+          schema:
+            type: string
+      summary: Regex'ed Common Name from Certificate
+  /v1/certificate/dn:
+    get:
+      operationId: get-dn-from-certificate
+      parameters:
+      - description: PEM Encoded Certificate
+        in: header
+        name: X-Forwarded-Tls-Client-Cert
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Client DN
+          schema:
+            type: string
+      summary: Distinguished Name from Certificate
+swagger: "2.0"
